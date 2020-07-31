@@ -10,14 +10,12 @@ provider:
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'ap-northeast-1'}
   profile: ${self:custom.config.aws_profile}
-  memorySize: 128
-  timeout: 10
+  memorySize: 256
+  timeout: 30
   logRetentionsInDays: 7
   environment:
     STAGE: ${self:stage, 'dev'}
     VERSION: ${self:custom.package.version}
-    SLACK_TOKEN: ${self:custom.config.slack_token}
-    CLICKUP_TOKEN: ${self:custom.config.clickup_token}
 
 custom:
   package: ${file(./package.json)}
@@ -29,5 +27,9 @@ custom:
 functions:
   handler:
     handler: main.handler
+    environment:
+      TEAM_ID: ${self:custom.config.team_id}
+      SLACK_TOKEN: ${self:custom.config.slack_token}
+      CLICKUP_TOKEN: ${self:custom.config.clickup_token}
     events:
       - schedule: cron(0 1 ? * MON-FRI *)
