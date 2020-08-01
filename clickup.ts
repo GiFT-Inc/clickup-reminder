@@ -1,5 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios'
 
+const locale = 'ja-JP'
+const teamId = process.env.TEAM_ID
 const baseURL = 'https://api.clickup.com/api/v2'
 const axiosConfig: AxiosRequestConfig = {
   baseURL,
@@ -11,8 +13,6 @@ const axiosConfig: AxiosRequestConfig = {
   },
 }
 const clickupClient = axios.create(axiosConfig)
-
-const teamId = process.env.TEAM_ID
 
 interface Task {
   spaceId: string
@@ -41,7 +41,7 @@ export const remindDelayedTasks = async (): Promise<void> => {
             .map((assignee) => {
               return assignee.username
             })
-            .join(',')
+            .join(', ')
           const parsedTask: Task = {
             spaceId: task.space.id,
             spaceName: '-',
@@ -63,13 +63,25 @@ export const remindDelayedTasks = async (): Promise<void> => {
   const spaceIds = tasks.map((task) => task.spaceId)
   const uniqueSpaceIds = spaceIds.filter((v, i) => spaceIds.indexOf(v) === i)
   for (const spaceId of uniqueSpaceIds) {
-    await clickupClient.get(`/space/${spaceId}`).then((res) => {
-      if (res.status === 200) {
-        tasks
-          .filter((task) => task.spaceId === spaceId)
-          .forEach((task) => (task.spaceName = res.data.name))
-      }
-    })
+    await clickupClient
+      .get(`/space/${spaceId}`)
+      .then((res) => {
+        if (res.status === 200) {
+          tasks
+            .filter((task) => task.spaceId === spaceId)
+            .forEach((task) => (task.spaceName = res.data.name))
+        }
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   }
-  console.info(tasks)
+  const message = tasks
+    .map((task) => {
+      return `${task.spaceName}: <${task.taskUrl}|${task.taskName}> (${
+        task.assignees
+      }) | ${task.dueDate.toLocaleDateString(locale)}`
+    })
+    .join('\n')
+  console.info(message)
 }
