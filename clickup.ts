@@ -13,7 +13,15 @@ const axiosConfig: AxiosRequestConfig = {
 const clickupClient = axios.create(axiosConfig)
 
 const teamId = process.env.TEAM_ID
-const locale = 'ja-JP'
+
+interface Task {
+  spaceId: string
+  spaceName: string
+  dueDate: Date
+  taskName: string
+  taskUrl: string
+  assignees: string
+}
 
 export const remindDelayedTasks = async (): Promise<void> => {
   const now = Date.now()
@@ -21,15 +29,12 @@ export const remindDelayedTasks = async (): Promise<void> => {
     subtasks: true,
     due_date_lt: now,
   }
-  await clickupClient
+  const tasks: Task[] = await clickupClient
     .get(`/team/${teamId}/task`, { params })
     .then((res) => {
       if (res.status === 200) {
-        res.data.tasks.forEach((task) => {
-          // TODO: set space name
-          const dueDate = new Date(
-            parseInt(task.due_date, 10),
-          ).toLocaleDateString(locale)
+        return res.data.tasks.map((task) => {
+          const dueDate = new Date(parseInt(task.due_date, 10))
           const taskName = task.name
           const taskUrl = task.url
           const assignees = task.assignees
@@ -37,14 +42,34 @@ export const remindDelayedTasks = async (): Promise<void> => {
               return assignee.username
             })
             .join(',')
-          const message = `Due Date: ${dueDate} - <${taskUrl}|${taskName}> (${assignees})`
-          console.info(message)
+          const parsedTask: Task = {
+            spaceId: task.space.id,
+            spaceName: '-',
+            dueDate,
+            taskName,
+            taskUrl,
+            assignees,
+          }
+          return parsedTask
         })
       } else {
         console.error(res)
+        return []
       }
     })
     .catch((err) => {
-      console.error(err)
+      throw err
     })
+  const spaceIds = tasks.map((task) => task.spaceId)
+  const uniqueSpaceIds = spaceIds.filter((v, i) => spaceIds.indexOf(v) === i)
+  for (const spaceId of uniqueSpaceIds) {
+    await clickupClient.get(`/space/${spaceId}`).then((res) => {
+      if (res.status === 200) {
+        tasks
+          .filter((task) => task.spaceId === spaceId)
+          .forEach((task) => (task.spaceName = res.data.name))
+      }
+    })
+  }
+  console.info(tasks)
 }
