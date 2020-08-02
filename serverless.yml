@@ -10,7 +10,7 @@ provider:
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'ap-northeast-1'}
   profile: ${self:custom.config.aws_profile}
-  memorySize: 512
+  memorySize: 256
   timeout: 30
   logRetentionsInDays: 7
   environment:
@@ -28,9 +28,9 @@ functions:
   handler:
     handler: main.handler
     environment:
-      LOCALE: ${self:custom.config.locale}
       CLICKUP_TOKEN: ${self:custom.config.clickup_token}
       TEAM_ID: ${self:custom.config.team_id}
+      INCLUDE_SUBTASKS: ${self:custom.config.include_subtasks}
       SLACK_TOKEN: ${self:custom.config.slack_token}
       SLACK_CHANNEL: ${self:custom.config.slack_channel}
     events:

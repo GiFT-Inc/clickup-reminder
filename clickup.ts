@@ -1,8 +1,8 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import { postMessage } from './slack'
 
-const locale = process.env.LOCALE || 'en-US'
 const teamId = process.env.TEAM_ID
+const subtasks = process.env.INCLUDE_SUBTASKS
 const baseURL = 'https://api.clickup.com/api/v2'
 const axiosConfig: AxiosRequestConfig = {
   baseURL,
@@ -30,6 +30,7 @@ export const remindDelayedTasks = async (): Promise<void> => {
     subtasks,
     due_date_lt: now,
     order_by: 'due_date',
+    reverse: true,
   }
   console.info(params)
   const tasks: Task[] = await clickupClient
@@ -57,7 +58,7 @@ export const remindDelayedTasks = async (): Promise<void> => {
           return parsedTask
         })
       } else {
-        console.error(res)
+        console.warn(res)
         return []
       }
     })
@@ -65,7 +66,7 @@ export const remindDelayedTasks = async (): Promise<void> => {
       throw err
     })
   if (tasks.length === 0) {
-    console.log('delayed task not found')
+    console.info('delayed task not found')
     return
   }
   const spaceIds = tasks.map((task) => task.spaceId)
@@ -86,7 +87,7 @@ export const remindDelayedTasks = async (): Promise<void> => {
   }
   const message = tasks
     .map((task) => {
-      return `${task.dueDate.toLocaleDateString(locale)} | ${
+      return `${task.dueDate.toLocaleDateString('ja-JP')} | ${
         task.spaceName
       }: <${task.taskUrl}|${task.taskName}> (${task.assignees})`
     })
