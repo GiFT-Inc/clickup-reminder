@@ -61,6 +61,10 @@ export const remindDelayedTasks = async (): Promise<void> => {
     .catch((err) => {
       throw err
     })
+  if (tasks.length === 0) {
+    console.log('delayed task not found')
+    return
+  }
   const spaceIds = tasks.map((task) => task.spaceId)
   const uniqueSpaceIds = spaceIds.filter((v, i) => spaceIds.indexOf(v) === i)
   for (const spaceId of uniqueSpaceIds) {
@@ -78,10 +82,17 @@ export const remindDelayedTasks = async (): Promise<void> => {
       })
   }
   const message = tasks
+    .sort((a, b) => {
+      if (a.dueDate < b.dueDate) {
+        return -1
+      } else {
+        return 1
+      }
+    })
     .map((task) => {
-      return `${task.spaceName}: <${task.taskUrl}|${task.taskName}> (${
-        task.assignees
-      }) | ${task.dueDate.toLocaleDateString(locale)}`
+      return `${task.dueDate.toLocaleDateString(locale)} | ${
+        task.spaceName
+      }: <${task.taskUrl}|${task.taskName}> (${task.assignees})`
     })
     .join('\n')
   await postMessage(message)
