@@ -28,8 +28,10 @@ functions:
   handler:
     handler: main.handler
     environment:
+      LOCALE: ${self:custom.config.locale}
+      CLICKUP_TOKEN: ${self:custom.config.clickup_token}
       TEAM_ID: ${self:custom.config.team_id}
       SLACK_TOKEN: ${self:custom.config.slack_token}
-      CLICKUP_TOKEN: ${self:custom.config.clickup_token}
+      SLACK_CHANNEL: ${self:custom.config.slack_channel}
     events:
       - schedule: cron(0 1 ? * MON-FRI *)

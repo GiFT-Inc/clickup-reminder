@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios'
+import { postMessage } from './slack'
 
-const locale = 'ja-JP'
+const locale = process.env.LOCALE || 'en-US'
 const teamId = process.env.TEAM_ID
 const baseURL = 'https://api.clickup.com/api/v2'
 const axiosConfig: AxiosRequestConfig = {
@@ -83,5 +84,5 @@ export const remindDelayedTasks = async (): Promise<void> => {
       }) | ${task.dueDate.toLocaleDateString(locale)}`
     })
     .join('\n')
-  console.info(message)
+  await postMessage(message)
 }
