@@ -27,9 +27,11 @@ interface Task {
 export const remindDelayedTasks = async (): Promise<void> => {
   const now = Date.now()
   const params = {
-    subtasks: true,
+    subtasks,
     due_date_lt: now,
+    order_by: 'due_date',
   }
+  console.info(params)
   const tasks: Task[] = await clickupClient
     .get(`/team/${teamId}/task`, { params })
     .then((res) => {
@@ -83,13 +85,6 @@ export const remindDelayedTasks = async (): Promise<void> => {
       })
   }
   const message = tasks
-    .sort((a, b) => {
-      if (a.dueDate < b.dueDate) {
-        return -1
-      } else {
-        return 1
-      }
-    })
     .map((task) => {
       return `${task.dueDate.toLocaleDateString(locale)} | ${
         task.spaceName
