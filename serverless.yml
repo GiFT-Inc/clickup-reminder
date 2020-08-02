@@ -10,7 +10,7 @@ provider:
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'ap-northeast-1'}
   profile: ${self:custom.config.aws_profile}
-  memorySize: 256
+  memorySize: 512
   timeout: 30
   logRetentionsInDays: 7
   environment:

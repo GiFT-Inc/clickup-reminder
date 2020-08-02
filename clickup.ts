@@ -33,6 +33,7 @@ export const remindDelayedTasks = async (): Promise<void> => {
   const tasks: Task[] = await clickupClient
     .get(`/team/${teamId}/task`, { params })
     .then((res) => {
+      console.log(res.status)
       if (res.status === 200) {
         return res.data.tasks.map((task) => {
           const dueDate = new Date(parseInt(task.due_date, 10))
