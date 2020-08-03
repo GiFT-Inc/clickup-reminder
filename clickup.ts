@@ -8,7 +8,7 @@ const axiosConfig: AxiosRequestConfig = {
   baseURL,
   headers: { Authorization: process.env.CLICKUP_TOKEN },
   responseType: 'json',
-  timeout: 5000,
+  timeout: 8000,
   validateStatus: () => {
     return true
   },
