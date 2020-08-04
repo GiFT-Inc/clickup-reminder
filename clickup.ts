@@ -19,8 +19,9 @@ interface Task {
   spaceId: string
   spaceName: string
   dueDate: Date
-  taskName: string
-  taskUrl: string
+  name: string
+  url: string
+  status: string
   assignees: string
 }
 
@@ -40,8 +41,9 @@ export const remindDelayedTasks = async (): Promise<void> => {
       if (res.status === 200) {
         return res.data.tasks.map((task) => {
           const dueDate = new Date(parseInt(task.due_date, 10))
-          const taskName = task.name
-          const taskUrl = task.url
+          const name = task.name
+          const url = task.url
+          const status = task.status.status
           const assignees = task.assignees
             .map((assignee) => {
               return assignee.username
@@ -51,8 +53,9 @@ export const remindDelayedTasks = async (): Promise<void> => {
             spaceId: task.space.id,
             spaceName: '-',
             dueDate,
-            taskName,
-            taskUrl,
+            name,
+            url,
+            status,
             assignees,
           }
           return parsedTask
@@ -87,9 +90,9 @@ export const remindDelayedTasks = async (): Promise<void> => {
   }
   const message = tasks
     .map((task) => {
-      return `${task.dueDate.toLocaleDateString('ja-JP')} | ${
+      return `${task.dueDate.toLocaleDateString('ja-JP')} | *${
         task.spaceName
-      }: <${task.taskUrl}|${task.taskName}> (${task.assignees})`
+      }*: <${task.url}|${task.name}> \`${task.status}\` (${task.assignees})`
     })
     .join('\n')
   await postMessage(message)
