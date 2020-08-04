@@ -69,7 +69,7 @@ export const remindDelayedTasks = async (): Promise<void> => {
       throw err
     })
   if (tasks.length === 0) {
-    console.info('delayed task not found')
+    await postMessage('no delayed task found :smile:')
     return
   }
   const spaceIds = tasks.map((task) => task.spaceId)
@@ -95,5 +95,7 @@ export const remindDelayedTasks = async (): Promise<void> => {
       }*: <${task.url}|${task.name}> \`${task.status}\` (${task.assignees})`
     })
     .join('\n')
-  await postMessage(message)
+  await postMessage(
+    [`${tasks.length} delayed task(s) found :cry:`, message].join('\n'),
+  )
 }
