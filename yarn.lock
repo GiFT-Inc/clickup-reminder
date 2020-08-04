@@ -143,7 +143,7 @@
     node-fetch "^2.6.0"
     shortid "^2.2.14"
 
-"@serverless/components@^2.33.0":
+"@serverless/components@^2.33.2":
   version "2.33.2"
   resolved "https://registry.yarnpkg.com/@serverless/components/-/components-2.33.2.tgz#ae6cf1eeb88c7c16a5ac288bb31426af3f65f25d"
   integrity sha512-AFoJgoya9cYQrDVeyI22RI1+6HNbnKbZ/pputugF87zpUM9mOdZZX4K85bH7w7QeVFARWcYQx7kNxENZcuQ7lQ==
@@ -190,13 +190,13 @@
     ramda "^0.26.1"
     semver "^6.1.1"
 
-"@serverless/enterprise-plugin@^3.6.18":
-  version "3.6.18"
-  resolved "https://registry.yarnpkg.com/@serverless/enterprise-plugin/-/enterprise-plugin-3.6.18.tgz#857413b63fe87c5e9a5efdb8db0096734fa94026"
-  integrity sha512-G5krMtCxuJ2yie2Ipn5U2tAdwUUFBixEta2Sj4ilXw+DGgwHqesSGw6buKCfodHwEwkQqcpI5YVf8Qqm+I9Zaw==
+"@serverless/enterprise-plugin@^3.7.0":
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/@serverless/enterprise-plugin/-/enterprise-plugin-3.7.0.tgz#cc93a8f21cac0f9c2c31219e7ef7d36155de22ba"
+  integrity sha512-KAGj1HO0zAoBN4thsD+8S18fnvCLyHXnNFBfNiJsgGAzDIOwtwKqkMUR3z2LeQjAKuFeNJ8+3erexK75j50iBw==
   dependencies:
     "@serverless/event-mocks" "^1.1.1"
-    "@serverless/platform-client" "^1.0.10"
+    "@serverless/platform-client" "^1.1.1"
     "@serverless/platform-sdk" "^2.3.1"
     chalk "^2.4.2"
     child-process-ext "^2.1.1"
@@ -242,9 +242,9 @@
     ncjsm "^4.0.1"
 
 "@serverless/platform-client-china@^1.0.28":
-  version "1.0.30"
-  resolved "https://registry.yarnpkg.com/@serverless/platform-client-china/-/platform-client-china-1.0.30.tgz#607af7f7e422cada223fa0bb552db932b20fbd40"
-  integrity sha512-qkiSoe7aPaqLAywUgbREEgSWSgqpX9bC7rhOTd+lMSfHD0AsysscEWKfvlgZMCge3EbfULLbic4jBsAdN64RGA==
+  version "1.0.31"
+  resolved "https://registry.yarnpkg.com/@serverless/platform-client-china/-/platform-client-china-1.0.31.tgz#4f5d462470d27d98031e9b07a6a8c92ad0b4f1a0"
+  integrity sha512-1O9AN91JTTuOe/33I1yyYzQsOvFRzCxgSdztqSu9fIQ/965TYsZtrbN/BeBxyB4nhdIIHJqFSq2EtZG3XrQZpA==
   dependencies:
     "@serverless/utils-china" "^0.1.19"
     archiver "^4.0.1"
@@ -260,7 +260,7 @@
     urlencode "^1.1.0"
     ws "^7.3.0"
 
-"@serverless/platform-client@^1.0.10", "@serverless/platform-client@^1.0.6":
+"@serverless/platform-client@^1.0.6", "@serverless/platform-client@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@serverless/platform-client/-/platform-client-1.1.1.tgz#6228667c707b47e8584a04fbd1f573e39c25fa67"
   integrity sha512-vvS8Mn/nKaAIcP4r5wagsU7YoDQ6u5V3DuSOYx6e7fJiZ9vUKPpUbdUovUDxIoANC+Jo4SzuRxfL6MrK8qfZDw==
@@ -503,52 +503,52 @@
   resolved "https://registry.yarnpkg.com/@types/tough-cookie/-/tough-cookie-4.0.0.tgz#fef1904e4668b6e5ecee60c52cc6a078ffa6697d"
   integrity sha512-I99sngh224D0M7XgW1s120zxCt3VYQ3IQsuw3P3jbq5GG4yc79+ZjyKznyOGIQrflfylLgcfekeZW/vk0yng6A==
 
-"@typescript-eslint/eslint-plugin@^3.7.1":
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-3.7.1.tgz#d144c49a9a0ffe8dd704bb179c243df76c111bc9"
-  integrity sha512-3DB9JDYkMrc8Au00rGFiJLK2Ja9CoMP6Ut0sHsXp3ZtSugjNxvSSHTnKLfo4o+QmjYBJqEznDqsG1zj4F2xnsg==
+"@typescript-eslint/eslint-plugin@^3.8.0":
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-3.8.0.tgz#f82947bcdd9a4e42be7ad80dfd61f1dc411dd1df"
+  integrity sha512-lFb4VCDleFSR+eo4Ew+HvrJ37ZH1Y9ZyE+qyP7EiwBpcCVxwmUc5PAqhShCQ8N8U5vqYydm74nss+a0wrrCErw==
   dependencies:
-    "@typescript-eslint/experimental-utils" "3.7.1"
+    "@typescript-eslint/experimental-utils" "3.8.0"
     debug "^4.1.1"
     functional-red-black-tree "^1.0.1"
     regexpp "^3.0.0"
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@typescript-eslint/experimental-utils@3.7.1":
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-3.7.1.tgz#ab036caaed4c870d22531d41f9352f3147364d61"
-  integrity sha512-TqE97pv7HrqWcGJbLbZt1v59tcqsSVpWTOf1AqrWK7n8nok2sGgVtYRuGXeNeLw3wXlLEbY1MKP3saB2HsO/Ng==
+"@typescript-eslint/experimental-utils@3.8.0":
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-3.8.0.tgz#ac1f7c88322dcfb7635ece6f0441516dd951099a"
+  integrity sha512-o8T1blo1lAJE0QDsW7nSyvZHbiDzQDjINJKyB44Z3sSL39qBy5L10ScI/XwDtaiunoyKGLiY9bzRk4YjsUZl8w==
   dependencies:
     "@types/json-schema" "^7.0.3"
-    "@typescript-eslint/types" "3.7.1"
-    "@typescript-eslint/typescript-estree" "3.7.1"
+    "@typescript-eslint/types" "3.8.0"
+    "@typescript-eslint/typescript-estree" "3.8.0"
     eslint-scope "^5.0.0"
     eslint-utils "^2.0.0"
 
-"@typescript-eslint/parser@^3.7.1":
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-3.7.1.tgz#5d9ccecb116d12d9c6073e9861c57c9b1aa88128"
-  integrity sha512-W4QV/gXvfIsccN8225784LNOorcm7ch68Fi3V4Wg7gmkWSQRKevO4RrRqWo6N/Z/myK1QAiGgeaXN57m+R/8iQ==
+"@typescript-eslint/parser@^3.8.0":
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-3.8.0.tgz#8e1dcd404299bf79492409c81c415fa95a7c622b"
+  integrity sha512-u5vjOBaCsnMVQOvkKCXAmmOhyyMmFFf5dbkM3TIbg3MZ2pyv5peE4gj81UAbTHwTOXEwf7eCQTUMKrDl/+qGnA==
   dependencies:
     "@types/eslint-visitor-keys" "^1.0.0"
-    "@typescript-eslint/experimental-utils" "3.7.1"
-    "@typescript-eslint/types" "3.7.1"
-    "@typescript-eslint/typescript-estree" "3.7.1"
+    "@typescript-eslint/experimental-utils" "3.8.0"
+    "@typescript-eslint/types" "3.8.0"
+    "@typescript-eslint/typescript-estree" "3.8.0"
     eslint-visitor-keys "^1.1.0"
 
-"@typescript-eslint/types@3.7.1":
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-3.7.1.tgz#90375606b2fd73c1224fe9e397ee151e28fa1e0c"
-  integrity sha512-PZe8twm5Z4b61jt7GAQDor6KiMhgPgf4XmUb9zdrwTbgtC/Sj29gXP1dws9yEn4+aJeyXrjsD9XN7AWFhmnUfg==
+"@typescript-eslint/types@3.8.0":
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-3.8.0.tgz#58581dd863f86e0cd23353d94362bb90b4bea796"
+  integrity sha512-8kROmEQkv6ss9kdQ44vCN1dTrgu4Qxrd2kXr10kz2NP5T8/7JnEfYNxCpPkArbLIhhkGLZV3aVMplH1RXQRF7Q==
 
-"@typescript-eslint/typescript-estree@3.7.1":
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-3.7.1.tgz#ce1ffbd0fa53f34d4ce851a7a364e392432f6eb3"
-  integrity sha512-m97vNZkI08dunYOr2lVZOHoyfpqRs0KDpd6qkGaIcLGhQ2WPtgHOd/eVbsJZ0VYCQvupKrObAGTOvk3tfpybYA==
+"@typescript-eslint/typescript-estree@3.8.0":
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-3.8.0.tgz#0606d19f629f813dbdd5a34c7a1e895d6191cac6"
+  integrity sha512-MTv9nPDhlKfclwnplRNDL44mP2SY96YmPGxmMbMy6x12I+pERcxpIUht7DXZaj4mOKKtet53wYYXU0ABaiXrLw==
   dependencies:
-    "@typescript-eslint/types" "3.7.1"
-    "@typescript-eslint/visitor-keys" "3.7.1"
+    "@typescript-eslint/types" "3.8.0"
+    "@typescript-eslint/visitor-keys" "3.8.0"
     debug "^4.1.1"
     glob "^7.1.6"
     is-glob "^4.0.1"
@@ -556,10 +556,10 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@typescript-eslint/visitor-keys@3.7.1":
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/visitor-keys/-/visitor-keys-3.7.1.tgz#b90191e74efdee656be8c5a30f428ed16dda46d1"
-  integrity sha512-xn22sQbEya+Utj2IqJHGLA3i1jDzR43RzWupxojbSWnj3nnPLavaQmWe5utw03CwYao3r00qzXfgJMGNkrzrAA==
+"@typescript-eslint/visitor-keys@3.8.0":
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/visitor-keys/-/visitor-keys-3.8.0.tgz#ad35110249fb3fc30a36bfcbfeea93e710cfaab1"
+  integrity sha512-gfqQWyVPpT9NpLREXNR820AYwgz+Kr1GuF3nf1wxpHD6hdxI62tq03ToomFnDxY0m3pUB39IF7sil7D5TQexLA==
   dependencies:
     eslint-visitor-keys "^1.1.0"
 
@@ -569,9 +569,9 @@ acorn-jsx@^5.2.0:
   integrity sha512-HiUX/+K2YpkpJ+SzBffkM/AQ2YE03S0U1kjTLVpoJdhZMOWy8qvXVN9JdLqv2QsaQ6MPYQIuNmwD8zOiYUofLQ==
 
 acorn@^7.3.1:
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.3.1.tgz#85010754db53c3fbaf3b9ea3e083aa5c5d147ffd"
-  integrity sha512-tLc0wSnatxAQHVHUapaHdz72pi9KUyHjq5KyHjGg9Y8Ifdc79pTh2XvI6I1/chZbnM7QtNKzh66ooDogPZSleA==
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.0.tgz#e1ad486e6c54501634c6c397c5c121daa383607c"
+  integrity sha512-+G7P8jJmCHr+S+cLfQxygbWhXy+8YTVGzAkpEbcLo2mLoL7tij/VG41QSHACSf5QgYRhMZYHuNc6drJaO0Da+w==
 
 adm-zip@^0.4.13, adm-zip@^0.4.14:
   version "0.4.16"
@@ -831,10 +831,10 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-aws-sdk@^2.721.0:
-  version "2.725.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.725.0.tgz#287ef3b55aa66f10c88671ec62300e96015aaf6a"
-  integrity sha512-Qd/MlxfQC9NpTxFUQ7u2BdsjiwNtbn5oVp04NPfXEc0xyT216TtcIs+jNyiJ9WaH7AgkHouU1BbBcReO8byYzg==
+aws-sdk@^2.725.0:
+  version "2.726.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.726.0.tgz#075aae1922e67e21285abae1bb081252cff4fec3"
+  integrity sha512-QRQ7MaW5dprdr/T3vCTC+J8TeUfpM45yWsBuATPcCV/oO8afFHVySwygvGLY4oJuo5Mf4mJn3+JYTquo6CqiaA==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -1496,7 +1496,7 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-dayjs@^1.8.30:
+dayjs@^1.8.31:
   version "1.8.31"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.8.31.tgz#0cd1114c2539dd5ad9428be0c38df6d4bb40b9d3"
   integrity sha512-mPh1mslned+5PuIuiUfbw4CikHk6AEAf2Baxih+wP5fssv+wmlVhvgZ7mq+BhLt7Sr/Hc8leWDiwe6YnrpNt3g==
@@ -2931,9 +2931,9 @@ is-docker@^1.1.0:
   integrity sha1-8EN01O7lMQ6ajhE78UlUEeRhdqE=
 
 is-docker@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/is-docker/-/is-docker-2.0.0.tgz#2cb0df0e75e2d064fe1864c37cdeacb7b2dcf25b"
-  integrity sha512-pJEdRugimx4fBMra5z2/5iRdZ63OhYV0vr0Dwm5+xtW4D1FvRkB8hamMIhnWfyJeDdyr/aa7BDyNbtG38VxgoQ==
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/is-docker/-/is-docker-2.1.0.tgz#25dc043e4fdc3cf969d622735e05a86ba9952e2b"
+  integrity sha512-mB2WygGsSeoXtLKpSYzP6sa0Z9DyU9ZyKlnvuZWxCociaI0qsF8u12sR72DFTX236g1u6oWSWYFuUk09nGQEjg==
 
 is-extendable@^0.1.0, is-extendable@^0.1.1:
   version "0.1.1"
@@ -4386,26 +4386,27 @@ serverless-prune-plugin@^1.4.3:
   dependencies:
     bluebird "^3.4.7"
 
-serverless@^1.77.1:
-  version "1.77.1"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.77.1.tgz#7a2264f690b52499931e7425daf6f515a0173f01"
-  integrity sha512-K+NFc1NNkah5ilSi+GCn7D6XOr+x6ieWRZMx8mmCWshi4p/MiEZ8WZ4F2Viu5bRQ/3dmrjTMjMlc5PnTwHfZIg==
+serverless@^1.78.0:
+  version "1.78.0"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-1.78.0.tgz#56bc9286d92240b2c5127c2a971980f556b9a4b1"
+  integrity sha512-xtjmZnOj7Vrhu4/FOpD0Iy8fC6/ZDmSB3eO1HpYtBn4WRQmT5VGGE1gn+PryRdk8oMa3AodAnwual4MfrRZ0ew==
   dependencies:
     "@serverless/cli" "^1.5.1"
-    "@serverless/components" "^2.33.0"
-    "@serverless/enterprise-plugin" "^3.6.18"
+    "@serverless/components" "^2.33.2"
+    "@serverless/enterprise-plugin" "^3.7.0"
     "@serverless/inquirer" "^1.1.2"
     "@serverless/utils" "^1.2.0"
+    ajv "^6.12.3"
     archiver "^3.1.1"
     async "^1.5.2"
-    aws-sdk "^2.721.0"
+    aws-sdk "^2.725.0"
     bluebird "^3.7.2"
     boxen "^3.2.0"
     cachedir "^2.3.0"
     chalk "^2.4.2"
     child-process-ext "^2.1.1"
     d "^1.0.1"
-    dayjs "^1.8.30"
+    dayjs "^1.8.31"
     decompress "^4.2.1"
     download "^7.1.0"
     essentials "^1.1.1"
