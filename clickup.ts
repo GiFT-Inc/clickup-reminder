@@ -26,7 +26,8 @@ interface Task {
 }
 
 export const remindDelayedTasks = async (): Promise<void> => {
-  const now = Date.now()
+  const timeDiff = 9 * 60 * 60 * 1000
+  const now = Date.now() - timeDiff
   const params = {
     subtasks,
     due_date_lt: now,
@@ -40,7 +41,7 @@ export const remindDelayedTasks = async (): Promise<void> => {
       console.log(res.status)
       if (res.status === 200) {
         return res.data.tasks.map((task) => {
-          const dueDate = new Date(parseInt(task.due_date, 10))
+          const dueDate = new Date(parseInt(task.due_date, 10) + timeDiff)
           const name = task.name
           const url = task.url
           const status = task.status.status
@@ -90,9 +91,9 @@ export const remindDelayedTasks = async (): Promise<void> => {
   }
   const message = tasks
     .map((task) => {
-      return `${task.dueDate.toLocaleDateString('ja-JP')} | *${
-        task.spaceName
-      }*: <${task.url}|${task.name}> \`${task.status}\` (${task.assignees})`
+      return `${task.dueDate.toLocaleDateString()} | *${task.spaceName}*: <${
+        task.url
+      }|${task.name}> \`${task.status}\` (${task.assignees})`
     })
     .join('\n')
   await postMessage(
