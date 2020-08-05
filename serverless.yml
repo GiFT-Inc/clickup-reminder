@@ -19,7 +19,7 @@ provider:
 
 custom:
   package: ${file(./package.json)}
-  config: ${file(./config/${opt:stage, 'dev'}.yml)}
+  config: ${file(./config/${opt:stage, 'dev'}.json)}
   prune:
     automatic: true
     number: 5
