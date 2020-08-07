@@ -21,7 +21,7 @@ Install depedencies using yarn.
 $ yarn install
 ```
 
-Create `dev.json` for your enviroment.
+Create `config/dev.json` for your enviroment.
 
 ```json
 {
@@ -34,7 +34,7 @@ Create `dev.json` for your enviroment.
 }
 ```
 
-You can specify **stage**, but filename must follow it.
+You can specify **stage**, but filename must follow it (like `config/stage.json`).
 
 https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy/
 
