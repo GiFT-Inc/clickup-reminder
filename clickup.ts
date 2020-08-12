@@ -1,6 +1,11 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import { postMessage } from './slack'
 
+import { Dayjs } from 'dayjs'
+import * as dayjs from 'dayjs'
+import 'dayjs/locale/ja'
+dayjs.locale('ja')
+
 const teamId = process.env.TEAM_ID
 const subtasks = process.env.INCLUDE_SUBTASKS
 
@@ -16,12 +21,10 @@ const axiosConfig: AxiosRequestConfig = {
 }
 const clickupClient = axios.create(axiosConfig)
 
-const timeDiff = 9 * 60 * 60 * 1000
-
 interface Task {
   spaceId: string
   spaceName: string
-  dueDate: Date
+  dueDate: Dayjs
   name: string
   url: string
   status: string
@@ -29,10 +32,9 @@ interface Task {
 }
 
 export const remindUpcomingTasks = async (): Promise<void> => {
-  const from = Date.now() - timeDiff
+  const from = dayjs().startOf('day').valueOf()
   const upcomingDays = 3
-  const upcomingTime = upcomingDays * 24 * 60 * 60 * 1000
-  const to = Date.now() - timeDiff + upcomingTime
+  const to = dayjs().add(upcomingDays, 'day').endOf('day').valueOf()
   const params = {
     subtasks,
     due_date_gt: from,
@@ -79,7 +81,7 @@ export const remindUpcomingTasks = async (): Promise<void> => {
   }
   const message = tasks
     .map((task) => {
-      return `${task.dueDate.toLocaleDateString()} | *${task.spaceName}*: <${
+      return `${task.dueDate.format('YYYY-MM-DD')} | *${task.spaceName}*: <${
         task.url
       }|${task.name}> \`${task.status}\` (${task.assignees})`
     })
@@ -90,7 +92,7 @@ export const remindUpcomingTasks = async (): Promise<void> => {
 }
 
 export const remindDelayedTasks = async (): Promise<void> => {
-  const now = Date.now() - timeDiff
+  const now = dayjs().startOf('day').valueOf()
   const params = {
     subtasks,
     due_date_lt: now,
@@ -136,7 +138,7 @@ export const remindDelayedTasks = async (): Promise<void> => {
   }
   const message = tasks
     .map((task) => {
-      return `${task.dueDate.toLocaleDateString()} | *${task.spaceName}*: <${
+      return `${task.dueDate.format('YYYY-MM-DD')} | *${task.spaceName}*: <${
         task.url
       }|${task.name}> \`${task.status}\` (${task.assignees})`
     })
@@ -147,7 +149,7 @@ export const remindDelayedTasks = async (): Promise<void> => {
 }
 
 const parseTask = (task: any): Task => {
-  const dueDate = new Date(parseInt(task.due_date, 10) + timeDiff)
+  const dueDate = dayjs(parseInt(task.due_date, 10))
   const name = task.name
   const url = task.url
   const status = task.status.status
