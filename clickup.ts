@@ -85,7 +85,7 @@ export const remindUpcomingTasks = async (): Promise<void> => {
     })
     .join('\n')
   await postMessage(
-    [`${tasks.length} upcoming task(s) found :stopwatch:`, message].join('\n'),
+    [`*${tasks.length} upcoming task(s) found* :bomb:`, message].join('\n'),
   )
 }
 
@@ -142,7 +142,7 @@ export const remindDelayedTasks = async (): Promise<void> => {
     })
     .join('\n')
   await postMessage(
-    [`${tasks.length} delayed task(s) found :cry:`, message].join('\n'),
+    [`*${tasks.length} delayed task(s) found* :boom:`, message].join('\n'),
   )
 }
 
