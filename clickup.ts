@@ -3,8 +3,11 @@ import { postMessage } from './slack'
 
 import { Dayjs } from 'dayjs'
 import * as dayjs from 'dayjs'
-import 'dayjs/locale/ja'
-dayjs.locale('ja')
+import * as utc from 'dayjs/plugin/utc'
+import * as timezone from 'dayjs/plugin/timezone'
+dayjs.extend(utc)
+dayjs.extend(timezone)
+const tz = 'Asia/Tokyo'
 
 const teamId = process.env.TEAM_ID
 const subtasks = process.env.INCLUDE_SUBTASKS
@@ -32,9 +35,9 @@ interface Task {
 }
 
 export const remindUpcomingTasks = async (): Promise<void> => {
-  const from = dayjs().startOf('day').valueOf()
+  const from = dayjs().tz(tz).startOf('day').valueOf()
   const upcomingDays = 3
-  const to = dayjs().add(upcomingDays, 'day').endOf('day').valueOf()
+  const to = dayjs().tz(tz).add(upcomingDays, 'day').endOf('day').valueOf()
   const params = {
     subtasks,
     due_date_gt: from,
@@ -81,9 +84,9 @@ export const remindUpcomingTasks = async (): Promise<void> => {
   }
   const message = tasks
     .map((task) => {
-      return `${task.dueDate.format('YYYY-MM-DD')} | *${task.spaceName}*: <${
-        task.url
-      }|${task.name}> \`${task.status}\` (${task.assignees})`
+      return `${task.dueDate.tz(tz).format('YYYY-MM-DD')} | *${
+        task.spaceName
+      }*: <${task.url}|${task.name}> \`${task.status}\` (${task.assignees})`
     })
     .join('\n')
   await postMessage(
@@ -92,7 +95,7 @@ export const remindUpcomingTasks = async (): Promise<void> => {
 }
 
 export const remindDelayedTasks = async (): Promise<void> => {
-  const now = dayjs().startOf('day').valueOf()
+  const now = dayjs().tz(tz).startOf('day').valueOf()
   const params = {
     subtasks,
     due_date_lt: now,
@@ -138,9 +141,9 @@ export const remindDelayedTasks = async (): Promise<void> => {
   }
   const message = tasks
     .map((task) => {
-      return `${task.dueDate.format('YYYY-MM-DD')} | *${task.spaceName}*: <${
-        task.url
-      }|${task.name}> \`${task.status}\` (${task.assignees})`
+      return `${task.dueDate.tz(tz).format('YYYY-MM-DD')} | *${
+        task.spaceName
+      }*: <${task.url}|${task.name}> \`${task.status}\` (${task.assignees})`
     })
     .join('\n')
   await postMessage(
