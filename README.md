@@ -6,6 +6,7 @@ Remind ClickUp **filtered tasks** by posting messages to Slack.
 
 - What is filtered tasks?
   - delayed: overdue tasks
+  - upcoming: upcoming tasks (due date coming up in 3days)
 
 ## requirements
 
