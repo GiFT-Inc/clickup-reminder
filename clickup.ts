@@ -11,6 +11,7 @@ const tz = 'Asia/Tokyo'
 
 const teamId = process.env.TEAM_ID
 const subtasks = process.env.INCLUDE_SUBTASKS
+const remindStatus = process.env.REMIND_STATUS
 
 const baseURL = 'https://api.clickup.com/api/v2'
 const axiosConfig: AxiosRequestConfig = {
@@ -44,6 +45,7 @@ export const remindUpcomingTasks = async (): Promise<void> => {
     due_date_lt: to,
     order_by: 'due_date',
     reverse: true,
+    status: remindStatus ?? '',
   }
   console.info(params)
   const tasks: Task[] = await clickupClient
@@ -101,6 +103,7 @@ export const remindDelayedTasks = async (): Promise<void> => {
     due_date_lt: now,
     order_by: 'due_date',
     reverse: true,
+    status: remindStatus ?? '',
   }
   console.info(params)
   const tasks: Task[] = await clickupClient

@@ -31,7 +31,8 @@ Create `config/dev.json` for your enviroment.
   "team_id": "your clickup team id",
   "include_subtasks": true,
   "slack_token": "your slack token",
-  "slack_channel": "channel name to post"
+  "slack_channel": "channel name to post",
+  "remind_status": "clickup remind status optional"
 }
 ```
 
