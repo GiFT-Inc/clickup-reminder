@@ -33,6 +33,7 @@ functions:
       INCLUDE_SUBTASKS: ${self:custom.config.include_subtasks}
       SLACK_TOKEN: ${self:custom.config.slack_token}
       SLACK_CHANNEL: ${self:custom.config.slack_channel}
-      REMIND_STATUS: ${self:custom.config.remind_status}
+      UPCOMIING_VIEW_ID: ${self:custom.config.upcoming_view_id}
+      DELAYID_VIEW_ID: ${self:custom.config.delayid_view_id}
     events:
       - schedule: cron(0 1 ? * MON-FRI *)

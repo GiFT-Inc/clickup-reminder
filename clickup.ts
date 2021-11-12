@@ -11,7 +11,8 @@ const tz = 'Asia/Tokyo'
 
 const teamId = process.env.TEAM_ID
 const subtasks = process.env.INCLUDE_SUBTASKS
-const remindStatus = process.env.REMIND_STATUS
+const upcomiingViewId = process.env.UPCOMIING_VIEW_ID
+const delayidViewId = process.env.DELAYID_VIEW_ID
 
 const baseURL = 'https://api.clickup.com/api/v2'
 const axiosConfig: AxiosRequestConfig = {
@@ -36,20 +37,8 @@ interface Task {
 }
 
 export const remindUpcomingTasks = async (): Promise<void> => {
-  const from = dayjs().tz(tz).startOf('day').valueOf()
-  const upcomingDays = 3
-  const to = dayjs().tz(tz).add(upcomingDays, 'day').endOf('day').valueOf()
-  const params = {
-    subtasks,
-    due_date_gt: from,
-    due_date_lt: to,
-    order_by: 'due_date',
-    reverse: true,
-    status: remindStatus ?? '',
-  }
-  console.info(params)
   const tasks: Task[] = await clickupClient
-    .get(`/team/${teamId}/task`, { params })
+    .get(`view/${upcomiingViewId}/task`)
     .then((res) => {
       console.log(res.status)
       if (res.status === 200) {
@@ -97,17 +86,8 @@ export const remindUpcomingTasks = async (): Promise<void> => {
 }
 
 export const remindDelayedTasks = async (): Promise<void> => {
-  const now = dayjs().tz(tz).startOf('day').valueOf()
-  const params = {
-    subtasks,
-    due_date_lt: now,
-    order_by: 'due_date',
-    reverse: true,
-    status: remindStatus ?? '',
-  }
-  console.info(params)
   const tasks: Task[] = await clickupClient
-    .get(`/team/${teamId}/task`, { params })
+    .get(`/view/${delayidViewId}/task`)
     .then((res) => {
       console.log(res.status)
       if (res.status === 200) {

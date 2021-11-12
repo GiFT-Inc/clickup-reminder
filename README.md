@@ -32,7 +32,8 @@ Create `config/dev.json` for your enviroment.
   "include_subtasks": true,
   "slack_token": "your slack token",
   "slack_channel": "channel name to post",
-  "remind_status": "clickup remind status optional"
+  "upcoming_view_id": "upcoming view id",
+  "delayid_view_id": "delayid view id"
 }
 ```
 
